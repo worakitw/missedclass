@@ -1,0 +1,5 @@
+6640012  3170100177127
+SELECT * FROM `studing` WHERE `teaId`='6640012'
+and substr(`dayLearn`,1,1)=4
+group by `subjId`,`stdGroupId`
+order by dayLearn
