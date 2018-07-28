@@ -13,8 +13,8 @@ header('Content-Type: text/html; charset=UTF-8');
 <?php 
 include_once ("nevBar.php") ;
 include_once ("function.php") ;
-date_default_timezone_set('Asia/Bangkok');
-$datenow= date("Y-m-d");
+// date_default_timezone_set('Asia/Bangkok');
+$datenow= $_SESSION['user']['datenow'];
 $data=$_GET;
 
 // if(isset($_GET['stdGroupId']) && isset($_GET['subjId'])){

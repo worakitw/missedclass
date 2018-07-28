@@ -1,5 +1,6 @@
 <?php
 include_once ("config.php");
+
 //แปลง 2011-03-08 to 8 มีนาคม 2554
 function chDay3($s){
 	$d=explode("-",$s);
@@ -55,21 +56,21 @@ function getGName($id){
     return $row['g_name'];
 }
 
-// function gen_option($sql, $def) {
-//     global $conn;
-//     if (is_array($sql)) {
-//         foreach ($sql as $k => $v) {
-//             $sel = $k == $def ? ' selected="selected"' : '';
-//             $a[] = "<option value=\"$k\"{$sel}>$v</option>";
-//         }
-//     } else {
-//         $res = mysqli_query($conn, $sql);
-//         $a = array();
-//         $a[0] = "<option value="1001">00 - ไม่มีนักเรียนขาดเรียน</option>";
-//         while ($row = mysqli_fetch_row($res)) {
-//             $sel = $row[0] == $def ? ' selected="selected"' : '';
-//             $a[] = "<option value=".$row[0]." ".$sel.">".$row[1]." - ".$row[2]." ".$row[3]."</option>";
-//         }
-//     }
-//     return implode('', $a);
-// }
+function gen_option($sql, $def) {
+    global $conn;
+    if (is_array($sql)) {
+        foreach ($sql as $k => $v) {
+            $sel = $k == $def ? ' selected="selected"' : '';
+            $a[] = "<option value=\"$k\"{$sel}>$v</option>";
+        }
+    } else {
+        $res = mysqli_query($conn, $sql);
+        $a = array();
+        // $a[0] = "<option value="1001">00 - ไม่มีนักเรียนขาดเรียน</option>";
+        while ($row = mysqli_fetch_row($res)) {
+            $sel = $row[0] == $def ? ' selected="selected"' : '';
+            $a[] = "<option value=".$row[0]." ".$sel.">".$row[1]." - ".$row[2]." ".$row[3]."</option>";
+        }
+    }
+    return implode('', $a);
+}

@@ -1,0 +1,30 @@
+SELECT m.`std_code` ,concat(s.`name`,'  ',s.lastname) as na,m.`subj_id`, d.`subjName` ,count(*)	as c
+FROM `std_missed` m
+left join student s ON m.`std_code`=s.`code`
+left join `subject` d ON m.`subj_id`=d.`subjId`
+WHERE `date` BETWEEN '2018-07-1' AND '2018-07-13' 
+group by m.`std_code`,m.`subj_id`
+
+CREATE VIEW summiss AS
+SELECT m.`std_code` ,concat(s.`name`,'  ',s.lastname) as na,m.`subj_id`, d.`subjName` ,count(*)	as sum
+FROM `std_missed` m
+left join student s ON m.`std_code`=s.`code`
+left join `subject` d ON m.`subj_id`=d.`subjId`
+group by m.`std_code`,m.`subj_id`
+
+SELECT std_code,count(*)	as c
+FROM `std_missed` m
+WHERE `date` BETWEEN '2018-07-1' AND '2018-07-13' 
+group by m.`std_code`,m.`subj_id`
+
+SELECT m.`std_code` ,m.`subj_id`
+FROM `std_missed` m
+WHERE `date` BETWEEN '2018-07-1' AND '2018-07-13' 
+order by `std_code`,`subj_id`
+
+CREATE TABLE subject AS
+SELECT `subjId` ,`subjName`
+FROM `studing` 
+group by `subjId`
+
+ALTER TABLE `subject` ADD PRIMARY 

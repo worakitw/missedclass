@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once 'config.php';
-date_default_timezone_set('Asia/Bangkok');
-$datenow= date("Y-m-d");
+// date_default_timezone_set('Asia/Bangkok');
+$datenow= $_SESSION['user']['datenow'];
 $data=$_POST;
 //  print_r($data);
 if ($data['std_code']!=''){

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,19 +47,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#"><img src="./img/student3_1.PNG" alt=""></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Deals</a></li>
+        <li><a href="re_01.php">รายงานการขาดเรียน</a></li>
+        <!-- <li><a href="#">Deals</a></li>
         <li><a href="#">Stores</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Contact</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li> -->
       </ul>
     </div>
   </div>
@@ -66,34 +67,43 @@
 
 <div class="container">    
   <div class="row">
-  <div class="col-md-4"></div>  
-    <div class="col-md-4 col-xs-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">LOGIN</div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-3 col-xs-1"></div>
-            <div class="col-sm-6 col-xs-10">
-              <img src="./img/login.gif" class="img-rounded" alt="Cinque Terre" width="100%" >
+  <div class="col-md-4"></div> 
+    <?php 
+    echo "aa".$_SESSION['user'];
+    if (!isset($_SESSION['user'])){
+      ?>
+      <div class="col-md-4 col-xs-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">LOGIN</div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3 col-xs-1"></div>
+              <div class="col-sm-6 col-xs-10">
+                <img src="./img/login.gif" class="img-rounded" alt="Cinque Terre" width="100%" >
+              </div>
             </div>
-          </div>
 
-          <form action="processLogin.php" method="post">
-            <div class="form-group">
-              <label for="uname">username:</label>
-              <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Password:</label>
-              <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-            </div><br>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button><br><br>
-          </form>
-          login ด้วยรหัสประชาชน 13 หลัก ทั้ง username และ password
-          หรือ login ด้วยรหัสครูตัดเกรด 7 หลัก
-        </div><!-- panel-body -->
-      </div><!-- panel panel-primary -->
-    </div>
+            <form action="processLogin.php" method="post">
+              <div class="form-group">
+                <label for="uname">username:</label>
+                <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+              </div><br>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button><br><br>
+            </form>
+            login ด้วยรหัสประชาชน 13 หลัก ทั้ง username และ password
+            หรือ login ด้วยรหัสครูตัดเกรด 7 หลัก
+          </div><!-- panel-body -->
+        </div><!-- panel panel-primary -->
+      </div>
+      <?php
+    }else{
+      header('Location: selectSubject.php');
+    }
+    ?>
   </div>
 </div><br>
 </div><br><br>

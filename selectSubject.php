@@ -14,10 +14,20 @@ include_once ("function.php") ;
 include_once ("nevBar.php") ;
 
 date_default_timezone_set('Asia/Bangkok');
+$date=date('Y-m-d');
+$n_day=date('N');
+if(isset($_POST['newdate'])){
+  $d=strtotime($_POST['newdate']);
+  $n_day=date("N",$d);
+  $date=date("Y-m-d", $d);
+  // echo "Created date is " . date("Y-m-d", $d);
+  // echo "n=".date("N",$d);
+}
+$_SESSION['user']['datenow']=$date;
 // echo date("N");
 // echo $_SESSION['user']['tea_name'];
 $tid= $_SESSION['user']['tea_id'];
-$data=getSubject($tid,date("N"));
+$data=getSubject($tid,$n_day);
 // echo "<pre>"; print_r($data);
 
 
@@ -32,8 +42,30 @@ $data=getSubject($tid,date("N"));
     <div class="panel panel-primary text-center">
       <?php echo $_SESSION['user']['tea_name'] ?>
     </div>
+    <div class="panel panel-primary text-center">
+      เลือกวันที่
+      <?php
+      $d=date("Y-m-d");
+      $d1=strtotime($d);
+      // $d2=strtotime("-1 days", $d1);
+      // echo date("Y-m-d",$d2);
+      $arr_day=array() ;
+      for ($i=1;$i<6;$i++){
+        $d3=strtotime("-".$i." days", $d1); 
+        $arr_day[date("Y-m-d",$d3)]=date("Y-m-d",$d3);
+      }
+      // print_r($arr_day);
+      ?>
+      <form method="post" action =''>
+        <select name="newdate" id="">
+          <?php echo gen_option($arr_day,$date)?>
+        </select>
+        <input type="submit" value="OK">
+      </form>
+      
+    </div>
     <div class="panel panel-primary">
-      <div class="panel-heading">เลือกรายวิชา &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo chDay3(date('Y-m-d'))?></div>
+      <div class="panel-heading">เลือกรายวิชา &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo chDay3($date)?></div>
       <div class="panel-body">
         <?php
         foreach($data as $k => $v) {
