@@ -53,6 +53,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="re_01.php">รายงานการขาดเรียน</a></li>
+        <li><a href="stdMiss.php">รายบุคคล</a></li>
         <!-- <li><a href="#">Deals</a></li>
         <li><a href="#">Stores</a></li>
         <li><a href="#">Contact</a></li> -->
@@ -69,7 +70,7 @@
   <div class="row">
   <div class="col-md-4"></div> 
     <?php 
-    echo "aa".$_SESSION['user'];
+    // echo "aa".$_SESSION['user'];
     if (!isset($_SESSION['user'])){
       ?>
       <div class="col-md-4 col-xs-12">

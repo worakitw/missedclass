@@ -69,8 +69,30 @@ function gen_option($sql, $def) {
         // $a[0] = "<option value="1001">00 - ไม่มีนักเรียนขาดเรียน</option>";
         while ($row = mysqli_fetch_row($res)) {
             $sel = $row[0] == $def ? ' selected="selected"' : '';
-            $a[] = "<option value=".$row[0]." ".$sel.">".$row[1]." - ".$row[2]." ".$row[3]."</option>";
+            $a[] = "<option value=".$row[1]." ".$sel.">".$row[1]." - ".$row[2]." ".$row[3]."</option>";
         }
     }
     return implode('', $a);
+}
+function getSubjName($id){
+    global $conn;
+    $sql="SELECT `subjName`  FROM `subject` WHERE `subjId`='$id'";
+    $res = mysqli_query($conn,$sql);
+    if (mysqli_num_rows($res) > 0) {
+      $row=mysqli_fetch_assoc($res);
+      return $row['subjName'];
+    }else{
+      return '';
+    }
+}
+function getTeaName($id){
+    global $conn;
+    $sql="SELECT `tea_name`  FROM `teacher` WHERE `tea_id`='$id'";
+    $res = mysqli_query($conn,$sql);
+    if (mysqli_num_rows($res) > 0) {
+      $row=mysqli_fetch_assoc($res);
+      return $row['tea_name'];
+    }else{
+      return '';
+    }
 }
