@@ -75,7 +75,7 @@
       ?>
       <div class="col-md-4 col-xs-12">
         <div class="panel panel-primary">
-          <div class="panel-heading">LOGIN</div>
+          <div class="panel-heading">LOGIN ระบบดูแลผู้เรียน บันทึกการขาดเรียน</div>
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-3 col-xs-1"></div>
