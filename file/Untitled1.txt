@@ -12,6 +12,12 @@ left join student s ON m.`std_code`=s.`code`
 left join `subject` d ON m.`subj_id`=d.`subjId`
 group by m.`std_code`,m.`subj_id`
 
+CREATE VIEW summiss AS
+SELECT m.`std_code`,m.`subj_id` ,count(*) as sum
+FROM `std_missed` m
+WHERE `std_group_id`=''
+group by m.`std_code`,m.`subj_id`
+
 SELECT std_code,count(*)	as c
 FROM `std_missed` m
 WHERE `date` BETWEEN '2018-07-1' AND '2018-07-13' 

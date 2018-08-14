@@ -69,7 +69,7 @@ $data=getSubject($tid,$n_day);
       <div class="panel-body">
         <?php
         foreach($data as $k => $v) {
-          $chk=chkMissValue($data[$k]['sem'],date('Y-m-d'),$data[$k]['stdGroupId'],$data[$k]['subjId']);
+          $chk=chkMissValue($data[$k]['sem'],$date,$data[$k]['stdGroupId'],$data[$k]['subjId']);
           if($chk!=''){
             $color='primary';
             $txt='(บันทึกข้อมูลแล้ว)';
